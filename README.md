@@ -1,3 +1,2 @@
-
-Prosty program wyświetlający informacje o mnie oraz aktualną datę.
-
+# Aleksander Szewczak
+# javaee
