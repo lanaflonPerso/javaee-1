@@ -38,7 +38,7 @@ public class AllBicyclesServlet extends HttpServlet {
 			out.append("<p>Production date: " + bicycle.getProductionDate() + "</p>");
 			out.append("<p>Price: " + bicycle.getPrice() + "</p>");
 			out.append("<p>Is Reserved: " + bicycle.isReserved() + "</p>");
-			out.append("<form action='data-cart'><input type='submit' name='add' value='" + bicycle.getId() +"' ></form>");
+			out.append("<form action='data-cart'><input type='hidden' name='add' value='" + bicycle.getId() +"' ><button type=submit>Add to shopping cart</button></form>");
 		}
 
 		out.append( "</br><li><a href='index'>Index</a></li>");
