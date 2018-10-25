@@ -1,3 +1,1 @@
-
-Prosty program wyświetlający informacje o mnie oraz aktualną datę.
-
+Program pozwalający na dodanie roweru, dodanie go do koszyka i wyświetlenie wszystkich rowerów.

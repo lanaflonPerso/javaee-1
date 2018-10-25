@@ -4,22 +4,23 @@ import java.util.Date;
 
 public class Bicycle {
 	
-	private String brand;
-	private double price;
+	private long id;
+	private String producer;
 	private Date productionDate;
-	private boolean isDiscount;
+	private double price;
+	private boolean isReserved;
 	
-	public String getBrand() {
-		return brand;
+	public long getId() {
+		return id;
 	}
-	public void setBrand(String brand) {
-		this.brand = brand;
+	public void setId(long id) {
+		this.id = id;
 	}
-	public double getPrice() {
-		return price;
+	public String getProducer() {
+		return producer;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public void setProducer(String producer) {
+		this.producer = producer;
 	}
 	public Date getProductionDate() {
 		return productionDate;
@@ -27,24 +28,32 @@ public class Bicycle {
 	public void setProductionDate(Date productionDate) {
 		this.productionDate = productionDate;
 	}
-	public boolean isDiscount() {
-		return isDiscount;
+	public double getPrice() {
+		return price;
 	}
-	public void setDiscount(boolean isDiscount) {
-		this.isDiscount = isDiscount;
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public boolean isReserved() {
+		return isReserved;
+	}
+	public void setReserved(boolean isReserved) {
+		this.isReserved = isReserved;
 	}
 	
+	public Bicycle(long id, String producer, Date productionDate, double price, boolean isReserved) {
+		super();
+		this.id = id;
+		this.producer = producer;
+		this.productionDate = productionDate;
+		this.price = price;
+		this.isReserved = isReserved;
+	}
 	public Bicycle() {
 		super();
 	}
 	
-	public Bicycle(String brand, double price, Date productionDate, boolean isDiscount) {
-		super();
-		this.brand = brand;
-		this.price = price;
-		this.productionDate = productionDate;
-		this.isDiscount = isDiscount;
-	}
+	
 	
 	
 	
