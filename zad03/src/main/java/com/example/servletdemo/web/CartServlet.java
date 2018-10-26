@@ -40,7 +40,7 @@ public class CartServlet extends HttpServlet {
 		for (Bicycle bicycle: allBicycles) {
 			out.append("<p>Id: " + bicycle.getId() + "</p>");
 			out.append("<p>Producer: " + bicycle.getProducer() + "</p>");
-			out.append("<p>Made date: " + bicycle.getProductionDate() + "</p>");
+			out.append("<p>Production date: " + bicycle.getProductionDate() + "</p>");
 			out.append("<p>Price: " + bicycle.getPrice() + "</p>");
 			out.append("<p>Is Reserved: " + bicycle.isReserved() + "</p></br>");
 		}
