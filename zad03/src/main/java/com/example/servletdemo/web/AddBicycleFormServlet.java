@@ -37,7 +37,7 @@ public class AddBicycleFormServlet extends HttpServlet {
 				"<form action='data-bicycle'>" +
 				"ID: <input type='text' name='id' value="+size+" /> <br />" +
 				"Producer: <input type='text' name='producer' /> <br />" +
-				"Production date: <input type='text' name='productionDate' /> <br />" +
+				"Production date: <input type='date' name='productionDate' /> <br />" +
 				"Price: <input type='text' name='price' /> <br />" +
 				"Reservation: <select name='isReserved'>" +
 				"<option value='true'>Yes</option>" +
