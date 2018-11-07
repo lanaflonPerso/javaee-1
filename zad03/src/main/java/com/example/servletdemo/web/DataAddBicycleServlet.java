@@ -26,7 +26,7 @@ public class DataAddBicycleServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		StorageService ss = (StorageService) getServletContext().getAttribute("storage_service");
+		StorageService ss = (StorageService) getServletContext().getAttribute("storageService");
 		
 		DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
 		long id = Long.parseLong(request.getParameter("id"));
@@ -51,6 +51,6 @@ public class DataAddBicycleServlet extends HttpServlet {
 	public void init() throws ServletException {
 
 		// application context
-		getServletContext().setAttribute("storage_service", new StorageService());
+		getServletContext().setAttribute("storageService", new StorageService());
 	}
 }

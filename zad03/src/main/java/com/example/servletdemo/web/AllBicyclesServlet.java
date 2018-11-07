@@ -26,7 +26,7 @@ public class AllBicyclesServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		StorageService ss = (StorageService) getServletContext().getAttribute("storage_service");
+		StorageService ss = (StorageService) getServletContext().getAttribute("storageService");
 	
 		List<Bicycle> allBicycles = ss.getAllBicycles();
 
@@ -50,6 +50,6 @@ public class AllBicyclesServlet extends HttpServlet {
 	public void init() throws ServletException {
 
 		// application context
-		getServletContext().setAttribute("storage_service", new StorageService());
+		getServletContext().setAttribute("storageService", new StorageService());
 	}
 }

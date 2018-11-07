@@ -26,7 +26,7 @@ public class AddBicycleFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		StorageService ss = (StorageService) getServletContext().getAttribute("storage_service");
+		StorageService ss = (StorageService) getServletContext().getAttribute("storageService");
 		
 		int size = ss.getAllBicycles().size() +1;
 		

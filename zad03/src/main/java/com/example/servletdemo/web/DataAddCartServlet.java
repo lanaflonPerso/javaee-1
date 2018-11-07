@@ -28,7 +28,7 @@ public class DataAddCartServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		StorageService ss = (StorageService) getServletContext().getAttribute("storage_service");
+		StorageService ss = (StorageService) getServletContext().getAttribute("storageService");
 		
 		List<Bicycle> bicycles = ss.getAllBicycles();
 		Bicycle bicycleToCart = bicycles.get(Integer.parseInt(request.getParameter("add")) - 1);
@@ -50,6 +50,6 @@ public class DataAddCartServlet extends HttpServlet {
 	public void init() throws ServletException {
 
 		// application context
-		getServletContext().setAttribute("storage_service", new StorageService());
+		getServletContext().setAttribute("storageService", new StorageService());
 	}
 }
