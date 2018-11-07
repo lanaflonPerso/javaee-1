@@ -27,6 +27,9 @@ public class AddBicycleFormServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		StorageService ss = (StorageService) getServletContext().getAttribute("storageService");
+		if(ss == null) {
+			getServletContext().setAttribute("storageService", new StorageService());
+		}
 		
 		int size = ss.getAllBicycles().size() +1;
 		

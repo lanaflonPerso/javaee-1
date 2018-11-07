@@ -20,6 +20,11 @@ import com.example.servletdemo.service.StorageService;
 @WebServlet(urlPatterns = "/data-bicycle")
 public class DataAddBicycleServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -27,6 +32,10 @@ public class DataAddBicycleServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		StorageService ss = (StorageService) getServletContext().getAttribute("storageService");
+		
+		if(ss == null) {
+			getServletContext().setAttribute("storageService", new StorageService());
+		}
 		
 		DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
 		long id = Long.parseLong(request.getParameter("id"));
@@ -45,12 +54,5 @@ public class DataAddBicycleServlet extends HttpServlet {
 		ss.addToDatabase(newBicycle);
 		response.sendRedirect("all-bicycles");
 		out.close();
-	}
-	
-	@Override
-	public void init() throws ServletException {
-
-		// application context
-		getServletContext().setAttribute("storageService", new StorageService());
 	}
 }

@@ -22,6 +22,11 @@ import com.example.servletdemo.service.StorageService;
 @WebServlet(urlPatterns = "/data-cart")
 public class DataAddCartServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,6 +34,10 @@ public class DataAddCartServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		StorageService ss = (StorageService) getServletContext().getAttribute("storageService");
+		
+		if(ss == null) {
+			getServletContext().setAttribute("storageService", new StorageService());
+		}
 		
 		List<Bicycle> bicycles = ss.getAllBicycles();
 		Bicycle bicycleToCart = bicycles.get(Integer.parseInt(request.getParameter("add")) - 1);
@@ -39,17 +48,11 @@ public class DataAddCartServlet extends HttpServlet {
 			session.setAttribute("cart", cart);
 		}
 		
+		@SuppressWarnings("unchecked")
 		List<Bicycle> cart = (List<Bicycle>) session.getAttribute("cart");
 		cart.add(bicycleToCart);
 		
 		response.sendRedirect("cart");
 		out.close();
-	}
-	
-	@Override
-	public void init() throws ServletException {
-
-		// application context
-		getServletContext().setAttribute("storageService", new StorageService());
 	}
 }
