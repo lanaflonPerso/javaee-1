@@ -33,7 +33,7 @@ public class GetAllSurveysServlet extends HttpServlet {
               out.append("<p>Od: " + survey.getFrom() + "</p>");
               out.append("<p>Do: " + survey.getTo() + "</p>");
               out.append("<p>Czestotliwosc: " + survey.getFrequency() + "</p>");
-              out.append("<p>Tematy: " + survey.getComments() + "</p>");
+              out.append("<p>Uwagi: " + survey.getComments() + "</p>");
 		  }
 		  
 		  out.append("</body></html>");
