@@ -10,6 +10,7 @@ public class Survey {
 	
 	public Survey(long id, String from, String to, String frequency, String comments) {
 		super();
+		this.id = id;
 		this.from = from;
 		this.to = to;
 		this.frequency = frequency;
