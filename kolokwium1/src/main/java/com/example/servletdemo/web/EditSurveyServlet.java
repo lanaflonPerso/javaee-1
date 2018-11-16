@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,38 +20,31 @@ import javax.servlet.http.HttpSession;
 import com.example.servletdemo.domain.Survey;
 import com.example.servletdemo.service.SurveyService;
 
-@WebServlet("/add-survey")
-public class AddSurveyServlet extends HttpServlet {
+@WebServlet("/edit-survey")
+public class EditSurveyServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		
 		SurveyService ss = (SurveyService)getServletContext().getAttribute("app_survey");
-		
-		Survey sessionSurvey = null;
 		long id = Long.parseLong(request.getParameter("id"));
-		String from = request.getParameter("from");
-		String to = request.getParameter("to");
-		String frequency = request.getParameter("frequency");
+		List<Survey> allSurveys = ss.getAllSurveys();
+		
 		List<String> comments = new ArrayList<String>();
 		
 		for(String comment : request.getParameterValues("comments")) {
 			comments.add(comment);
 		}
 		
-		if(session.getAttribute("sess_survey") != null) {
-			sessionSurvey = (Survey) session.getAttribute("sess_survey");
-			ss.removeSurvey(sessionSurvey);
+		for (Iterator<Survey> iter = allSurveys.listIterator(); iter.hasNext(); ) {
+            Survey s = iter.next();
+            if (s.getId() == id) {
+                s.setComments(comments);
+            }
 		}
-	
-		sessionSurvey = new Survey(id,from,to,frequency,comments);
-		ss.addSurvey(sessionSurvey);
 		
-		
-		session.setAttribute("sess_survey", sessionSurvey);
-		
-		response.sendRedirect("final.jsp");
+		response.sendRedirect("allsurveys");
 	}
 	
 	@Override

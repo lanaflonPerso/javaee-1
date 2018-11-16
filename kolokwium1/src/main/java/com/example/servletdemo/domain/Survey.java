@@ -1,14 +1,16 @@
 package com.example.servletdemo.domain;
 
+import java.util.List;
+
 public class Survey {
 	
 	private long id;
 	private String from;
 	private String to;
 	private String frequency;
-	private String comments;
+	private List<String> comments;
 	
-	public Survey(long id, String from, String to, String frequency, String comments) {
+	public Survey(long id, String from, String to, String frequency, List<String> comments) {
 		super();
 		this.id = id;
 		this.from = from;
@@ -49,11 +51,11 @@ public class Survey {
 		this.frequency = frequency;
 	}
 
-	public String getComments() {
+	public List<String> getComments() {
 		return comments;
 	}
 
-	public void setComments(String comments) {
+	public void setComments(List<String> comments) {
 		this.comments = comments;
 	}
 	

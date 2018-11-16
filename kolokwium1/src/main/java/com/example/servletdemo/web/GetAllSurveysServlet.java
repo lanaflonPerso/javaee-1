@@ -29,11 +29,17 @@ public class GetAllSurveysServlet extends HttpServlet {
 		out.append("<html><body>");
 		
 		  for (Survey survey: allSurveys) {
+			  out.append("<form action='edit-survey'>");
+			  out.append("<input type='hidden' name='id' value='" + survey.getId() + "'>");
 			  out.append("<p>ID: <b>" + survey.getId() + "</b></p>");
               out.append("<p>Od: " + survey.getFrom() + "</p>");
               out.append("<p>Do: " + survey.getTo() + "</p>");
               out.append("<p>Czestotliwosc: " + survey.getFrequency() + "</p>");
-              out.append("<p>Uwagi: " + survey.getComments() + "</p>");
+              for (String comment: survey.getComments()) {
+            	    out.append("<p><input type='checkbox' name='comments' value='"+comment+"'>"+comment+"</p>");
+            	}
+              out.append("<button type='submit'>Zostaw zaznaczone</button>");
+              out.append("</form>");
 		  }
 		  
 		  out.append("</body></html>");
