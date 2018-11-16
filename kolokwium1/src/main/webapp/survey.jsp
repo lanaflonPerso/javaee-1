@@ -26,8 +26,8 @@
     <input type="radio" name="frequency" value="co miesiac">Co miesiąc<br>
 
     <br><label >Uwagi:</label><br>
-    <input type="checkbox" name="comments" value="Niewygodne siodełko">Niewygodne siodełko<br>
-    <input type="checkbox" name="comments" value="Zła regulacja hamulców">Zła regulacja hamulców<br>
+    <input type="checkbox" name="comments" value="Niewygodne siodelko">Niewygodne siodełko<br>
+    <input type="checkbox" name="comments" value="Zla regulacja hamulcow">Zła regulacja hamulców<br>
     <input type="checkbox" name="comments" value="Zepsuta kierownica">Zepsuta kierownica<br><br>
 
     <input type="submit" value="Wyślij">

@@ -11,6 +11,7 @@
 <p>Uwagi: ${sess_survey.comments}</p>
 
 <a href="survey.jsp"><button>Zmień ustawienia</button></a>
+<a href="allsurveys"><button>Wyświetl wszystkie ankiety</button></a>
 
 </body>
 </html>
