@@ -116,6 +116,42 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "updateBicycle",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restwsejbdemo/api/bicycle/0?producer=NowyKross&price=111.11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restwsejbdemo",
+						"api",
+						"bicycle",
+						"0"
+					],
+					"query": [
+						{
+							"key": "producer",
+							"value": "NowyKross"
+						},
+						{
+							"key": "price",
+							"value": "111.11"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -47,6 +48,14 @@ public class BicycleRESTService {
 		bm.addBicycle(bicycle);
 
 		return Response.status(201).entity("Bicycle").build();
+	}
+	
+	@PUT
+	@Path("/{bicycleId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateBicycle(@PathParam("bicycleId") Integer id, @QueryParam("producer") String producer, @QueryParam("price") double price) {
+		bm.updateBicycle(id, producer, price);
+		return Response.status(200).build();
 	}
 
 	@DELETE

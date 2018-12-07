@@ -25,6 +25,12 @@ public class BicycleManager {
 		return db.get(id);
 	}
 	
+	public void updateBicycle(Integer id, String producer, double price) {
+		Bicycle b = db.get(id);
+		b.setPrice(price);
+		b.setProducer(producer);
+	}
+	
 	public List<Bicycle> getAllBicycles(){
 		return db;
 	}
