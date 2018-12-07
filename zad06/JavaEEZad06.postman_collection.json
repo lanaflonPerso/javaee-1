@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "81563b04-c3c5-4bb3-bb56-dc7847844742",
+		"name": "JavaEEZad06",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddBicycle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restwsejbdemo/api/bicycle?producer=KROSS&price=999.99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restwsejbdemo",
+						"api",
+						"bicycle"
+					],
+					"query": [
+						{
+							"key": "producer",
+							"value": "KROSS"
+						},
+						{
+							"key": "price",
+							"value": "999.99"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBicycle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restwsejbdemo/api/bicycle/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restwsejbdemo",
+						"api",
+						"bicycle",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllBicycles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restwsejbdemo/api/bicycle/allBicycles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restwsejbdemo",
+						"api",
+						"bicycle",
+						"allBicycles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteBicycle",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restwsejbdemo/api/bicycle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restwsejbdemo",
+						"api",
+						"bicycle"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
