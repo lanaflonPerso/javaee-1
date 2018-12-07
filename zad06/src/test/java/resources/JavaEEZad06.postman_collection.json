@@ -93,7 +93,7 @@
 			"response": []
 		},
 		{
-			"name": "deleteBicycle",
+			"name": "deleteAllBicycles",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -102,7 +102,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/restwsejbdemo/api/bicycle",
+					"raw": "http://localhost:8080/restwsejbdemo/api/bicycle/deleteAllBicycles",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -111,7 +111,8 @@
 					"path": [
 						"restwsejbdemo",
 						"api",
-						"bicycle"
+						"bicycle",
+						"deleteAllBicycles"
 					]
 				}
 			},
@@ -148,6 +149,32 @@
 							"key": "price",
 							"value": "111.11"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteBicycle",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restwsejbdemo/api/bicycle/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restwsejbdemo",
+						"api",
+						"bicycle",
+						"0"
 					]
 				}
 			},

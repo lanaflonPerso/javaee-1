@@ -57,8 +57,18 @@ public class BicycleRESTService {
 		bm.updateBicycle(id, producer, price);
 		return Response.status(200).build();
 	}
+	
+	@DELETE
+	@Path("/{bicycleId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateBicycle(@PathParam("bicycleId") Integer id) {
+		bm.deleteBicycle(bm.getBicycle(id));
+		return Response.status(200).build();
+	}
 
 	@DELETE
+	@Path("/deleteAll")
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Response clearBicycles() {
 		bm.deleteAllBicycles();
 		return Response.status(200).build();
