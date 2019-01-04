@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "ad557b42-eb1d-4621-8df2-f1362a4619dd",
+		"name": "restejbjpademo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Bicycle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"producer\": \"Reksio\",\n\t\"price\": 2018\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle?producer=Kross&price=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle"
+					],
+					"query": [
+						{
+							"key": "producer",
+							"value": "Kross"
+						},
+						{
+							"key": "price",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Bicycles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/allBicycles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"allBicycles"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Olek",
+							"disabled": true
+						},
+						{
+							"key": "yob",
+							"value": "1997",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bicycle",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Bicycle",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Bicycle",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/1?producer=Stasiak&price=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"1"
+					],
+					"query": [
+						{
+							"key": "producer",
+							"value": "Stasiak"
+						},
+						{
+							"key": "price",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

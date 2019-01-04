@@ -30,6 +30,18 @@ public class BicycleManager {
 	
 	@SuppressWarnings("unchecked")
 	public List<Bicycle> getAll(){
-		return em.createNamedQuery("bicycle.all").getResultList();
+		return em.createNamedQuery("bicycle.getAll").getResultList();
 	}
+	
+	public Bicycle getBicycle(int id){
+	        return em.find(Bicycle.class, id);
+    }
+	 
+	public Bicycle updateBicycle(Bicycle bicycle) {
+	        return em.merge(bicycle);
+    }
+
+    public void deleteAll(){
+        em.createNamedQuery("bicycle.deleteAll").executeUpdate();
+    }
 }

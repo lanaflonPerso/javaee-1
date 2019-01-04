@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "bicycle.getAll", query = "Select b from Bicycle b"),
-    @NamedQuery(name = "bicycle.deleteAll", query="Delete from Bicycle ")
+    @NamedQuery(name = "bicycle.deleteAll", query="Delete from Bicycle")
 })
 public class Bicycle {
 	
