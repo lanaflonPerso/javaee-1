@@ -1,9 +1,15 @@
 package com.example.restejbjpa.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,25 +23,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Bicycle {
 	
 	private long id;
-	private String producer;
+	private String model;
 	private double price;
+	private List<Producer> producers = new ArrayList<>();
 	
 	public Bicycle() {
 		super();
 	}
 	
-	public Bicycle(String producer, double price) {
+	public Bicycle(String model, double price) {
 		super();
-		this.producer = producer;
+		this.model = model;
 		this.setPrice(price);
 	}
 	
-	public String getProducer() {
-		return producer;
+	public String getModel() {
+		return model;
 	}
 	
-	public void setProducer(String producer) {
-		this.producer = producer;
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 	public double getPrice() {
@@ -53,5 +60,14 @@ public class Bicycle {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	@ManyToMany(mappedBy = "bicycles", fetch = FetchType.EAGER)
+	public List<Producer> getProducers() {
+		return producers;
+	}
+
+	public void setProducers(List<Producer> producers) {
+		this.producers = producers;
 	}
 } 

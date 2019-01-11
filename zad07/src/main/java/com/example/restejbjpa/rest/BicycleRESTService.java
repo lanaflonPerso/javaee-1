@@ -44,8 +44,8 @@ public class BicycleRESTService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addBicycle(@QueryParam("producer") String producer, @QueryParam("price") double price) {
-		Bicycle bicycle = new Bicycle(producer, price);
+	public Response addBicycle(@QueryParam("model") String model, @QueryParam("price") double price) {
+		Bicycle bicycle = new Bicycle(model, price);
 		bm.addBicycle(bicycle);
 
 		return Response.status(201).entity("Bicycle").build();
@@ -55,14 +55,14 @@ public class BicycleRESTService {
 	@Path("/{bicycleId}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateBicycle(@PathParam("bicycleId") long id, 
-	                               @QueryParam("producer") String producer, @QueryParam("price") double price) {
+	                               @QueryParam("model") String model, @QueryParam("price") double price) {
 
 		Bicycle b = bm.getBicycle(id);
 	    if (b == null) {
 	        throw new WebApplicationException("Can't find it", 404);
 	    }
 
-	    b.setProducer(producer);
+	    b.setModel(model);
 	    b.setPrice(price);
 
 	    return Response.status(200).entity("Bicycle").build();

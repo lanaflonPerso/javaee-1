@@ -10,8 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.example.restejbjpa.domain.Bicycle;
-import com.example.restejbjpa.domain.Book;
-import com.example.restejbjpa.domain.Person;
 
 @Stateless
 public class BicycleManager {

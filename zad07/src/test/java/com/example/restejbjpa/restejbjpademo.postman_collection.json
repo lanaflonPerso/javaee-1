@@ -19,10 +19,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"producer\": \"Reksio\",\n\t\"price\": 2018\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/restejbjpademo/api/bicycle?producer=Kross&price=100",
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle?model=BEST&price=100",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -35,8 +35,8 @@
 					],
 					"query": [
 						{
-							"key": "producer",
-							"value": "Kross"
+							"key": "model",
+							"value": "BEST"
 						},
 						{
 							"key": "price",
@@ -126,7 +126,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete Bicycle",
+			"name": "Delete All Bicycles",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -174,7 +174,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/1?producer=Stasiak&price=1",
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/1?model=BETTER&price=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -188,13 +188,122 @@
 					],
 					"query": [
 						{
-							"key": "producer",
-							"value": "Stasiak"
+							"key": "model",
+							"value": "BETTER"
 						},
 						{
 							"key": "price",
 							"value": "1"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Producer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/producer?name=Test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"producer"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Test"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Producer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/producer/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"producer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Producers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/producer/allProducers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"producer",
+						"allProducers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ManyToMany",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/producer/manytomany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"producer",
+						"manytomany"
 					]
 				}
 			},
