@@ -293,7 +293,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/restejbjpademo/api/producer/manytomany",
+					"raw": "http://localhost:8080/restejbjpademo/api/producer/onetomany",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -303,7 +303,59 @@
 						"restejbjpademo",
 						"api",
 						"producer",
-						"manytomany"
+						"onetomany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OneToMany",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/producer/onetomany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"producer",
+						"onetomany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OneToOne",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/onetoone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"onetoone"
 					]
 				}
 			},
