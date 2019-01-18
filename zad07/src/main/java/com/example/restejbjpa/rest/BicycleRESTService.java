@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -72,6 +75,46 @@ public class BicycleRESTService {
 	}
 	
 	@GET
+	@Path("/query/producers/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Producer> getProducersOfBicycle(@PathParam("id") Long id){		
+		return bm.getProducersOfBicycle(id) ;
+	}
+	
+	@GET
+	@Path("/query/price/{price}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Bicycle> getBicycleByPrice(@PathParam("price") double price){
+		return bm.findByPrice(price);
+	}
+	
+
+	@GET
+	@Path("/query/bicyclesproducer/{pName}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getBicycleOfProducerByProducerName(@PathParam("pName") String name){
+		
+		List<Object[]> rawProducers = bm.getBicycleOfProducerByProducerName(name);
+		JsonArrayBuilder producers = Json.createArrayBuilder();
+		
+		for(Object[] rawProducer: rawProducers){
+			
+			String pName = (String) rawProducer[0];
+			String bModel = (String) rawProducer[1];
+			double bPrice = (Double) rawProducer[2];
+			
+			producers.add(Json.createObjectBuilder()
+					.add("name", pName)
+					.add("model", bModel)
+					.add("price", bPrice));
+			
+		}
+		
+		JsonObject json =  Json.createObjectBuilder().add("result", producers).build();
+		return Response.ok(json, MediaType.APPLICATION_JSON).build();
+	}
+	
+	@GET
 	@Path("/onetoone")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String producerToManyAddresses(){
@@ -86,6 +129,7 @@ public class BicycleRESTService {
 
 		return "OneToOne";
 	}
+	
 
 	@DELETE
 	public Response clearBicycles() {

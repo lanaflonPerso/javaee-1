@@ -2,6 +2,8 @@ package com.example.restejbjpa.domain;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Address {
 
@@ -65,13 +67,15 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
+
 	// Address belongs to producer
     @ManyToOne
+    @JsonIgnore
     public Producer getProducer() {
         return producer;
     }
 
+    @JsonIgnore
     public void setProducer(Producer producer) {
         this.producer = producer;
     }

@@ -12,14 +12,20 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "bicycle.getAll", query = "Select b from Bicycle b"),
-    @NamedQuery(name = "bicycle.deleteAll", query="Delete from Bicycle")
+    @NamedQuery(name = "bicycle.deleteAll", query="Delete from Bicycle"),
+    @NamedQuery(name = "bicycle.findByPrice", query = "Select b from Bicycle b where b.price = :price"),
+    @NamedQuery(name = "bicycleProducer.findByProducerName",
+	query = "Select p.name, b.model, b.price from Bicycle b JOIN b.producers p where p.name = :name")
 })
 public class Bicycle {
 	
@@ -68,7 +74,6 @@ public class Bicycle {
 	public List<Producer> getProducers() {
 		return producers;
 	}
-
 	public void setProducers(List<Producer> producers) {
 		this.producers = producers;
 	}
@@ -81,4 +86,5 @@ public class Bicycle {
 	public void setLicense(License license) {
 		this.license = license;
 	}
+	
 } 

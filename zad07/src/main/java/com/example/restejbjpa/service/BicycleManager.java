@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 
 import com.example.restejbjpa.domain.Bicycle;
 import com.example.restejbjpa.domain.License;
+import com.example.restejbjpa.domain.Producer;
 
 @Stateless
 public class BicycleManager {
@@ -32,6 +33,11 @@ public class BicycleManager {
 		return em.createNamedQuery("bicycle.getAll").getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Bicycle> findByPrice(double price){
+		return em.createNamedQuery("bicycle.findByPrice").setParameter("price", price).getResultList();
+	}
+	
 	public Bicycle getBicycle(int id){
 	        return em.find(Bicycle.class, id);
     }
@@ -46,5 +52,17 @@ public class BicycleManager {
     
     public void addLicense(License license) {
 		em.persist(license);
+	}
+    
+    
+    public List<Producer> getProducersOfBicycle(Long id){
+		Bicycle retrieved = em.find(Bicycle.class, id);
+		List<Producer> result = new ArrayList<>(retrieved.getProducers());
+		return result;
+    }
+    
+    @SuppressWarnings("unchecked")
+	public List<Object[]> getBicycleOfProducerByProducerName(String name){		
+		return em.createNamedQuery("bicycleProducer.findByProducerName").setParameter("name", name).getResultList();
 	}
 }

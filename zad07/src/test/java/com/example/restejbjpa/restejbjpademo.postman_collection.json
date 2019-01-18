@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ad557b42-eb1d-4621-8df2-f1362a4619dd",
+		"_postman_id": "ac4c5a5a-5d69-41e1-bcbb-7dc927e1c7f8",
 		"name": "restejbjpademo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -284,7 +284,7 @@
 			"response": []
 		},
 		{
-			"name": "ManyToMany",
+			"name": "oneProducerToManyAddresses",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -310,7 +310,7 @@
 			"response": []
 		},
 		{
-			"name": "OneToMany",
+			"name": "manyBicyclesToManyProducers",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -319,7 +319,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/restejbjpademo/api/producer/onetomany",
+					"raw": "http://localhost:8080/restejbjpademo/api/producer/manytomany",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -329,14 +329,14 @@
 						"restejbjpademo",
 						"api",
 						"producer",
-						"onetomany"
+						"manytomany"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "OneToOne",
+			"name": "oneBicycleToOneLicense",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -356,6 +356,90 @@
 						"api",
 						"bicycle",
 						"onetoone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByPrice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/query/price/100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"query",
+						"price",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProducerOfBicycle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/query/producers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"query",
+						"producers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBicycleOfProducerByProducerName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/query/bicyclesproducer/KROSS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"query",
+						"bicyclesproducer",
+						"KROSS"
 					]
 				}
 			},
