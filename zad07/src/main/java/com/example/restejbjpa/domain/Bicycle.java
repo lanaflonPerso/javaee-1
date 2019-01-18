@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -26,6 +27,7 @@ public class Bicycle {
 	private String model;
 	private double price;
 	private List<Producer> producers = new ArrayList<>();
+	private License license;
 	
 	public Bicycle() {
 		super();
@@ -69,5 +71,14 @@ public class Bicycle {
 
 	public void setProducers(List<Producer> producers) {
 		this.producers = producers;
+	}
+	
+	// Bicycle has unique license, License has unique bicycle
+	@OneToOne
+	public License getLicense() {
+		return license;
+	}
+	public void setLicense(License license) {
+		this.license = license;
 	}
 } 

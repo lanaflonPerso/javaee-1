@@ -66,7 +66,7 @@ public class Address {
 		this.city = city;
 	}
 	
-	// Producer has many bicycles
+	// Address belongs to producer
     @ManyToOne
     public Producer getProducer() {
         return producer;

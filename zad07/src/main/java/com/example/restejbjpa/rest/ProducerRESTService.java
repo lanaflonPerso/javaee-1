@@ -15,6 +15,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.example.restejbjpa.domain.Address;
 import com.example.restejbjpa.domain.Bicycle;
 import com.example.restejbjpa.domain.Producer;
 import com.example.restejbjpa.service.ProducerManager;
@@ -54,12 +55,12 @@ public class ProducerRESTService {
 	@GET
 	@Path("/manytomany")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String testRelations(){
+	public String manyProducersToManyBicycles(){
 		
-		Producer p = new Producer("Prod");
+		Producer p = new Producer("KROSS");
 		
-		Bicycle b1 = new Bicycle("Fiat", 100);
-		Bicycle b2 = new Bicycle("Ford", 200);
+		Bicycle b1 = new Bicycle("LEVEL A1", 100);
+		Bicycle b2 = new Bicycle("LEVEL A2", 200);
 
 		List<Bicycle> bicycles = new ArrayList<>();
 		bicycles.add(b1);
@@ -67,18 +68,28 @@ public class ProducerRESTService {
 		
 		p.addBicycles(bicycles);	
 		pm.addProducer(p);
-		
-	
-		System.out.println("Id b: " + b1.getId());
-		
-		System.out.println("\n\n@@@ Size of producers: " + b1.getProducers().size());
-		
-		//Car retrieved = pm.getCar(c1.getId());
-		//Car retrieved = pm.updateCar(c1);
-		
-		
-		//System.out.println("\n\n@@@ Size of owners: " + retrieved.getOwners().size());
 
 		return "ManyToMany";
+	}
+	
+	@GET
+	@Path("/onetomany")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String producerToManyAddresses(){
+		
+		Producer p = new Producer("KROSS");
+		
+		pm.addProducer(p);
+		
+		Address a1 = new Address("Kolejowa", "70", "06-300", "Przasnysz");
+		Address a2 = new Address("Abecadlowa", "15", "02-300", "Pruszcz");
+
+		pm.addAddress(a1);
+		pm.addAddress(a2);
+		
+		a1.setProducer(p);
+		a2.setProducer(p);
+
+		return "OneToMany";
 	}
 }

@@ -12,6 +12,7 @@ public class Producer {
     private long id;
     private String name;
     private List<Bicycle> bicycles = new ArrayList<Bicycle>();
+    private List<Address> addresses = new ArrayList<Address>();
 
     public Producer(String name) {
         this.name = name;
@@ -55,5 +56,17 @@ public class Producer {
 			bicycle.getProducers().add(this);
 		}
 	}
+	
+	// Producer has many addresses
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+}
+	
+	
 
 }

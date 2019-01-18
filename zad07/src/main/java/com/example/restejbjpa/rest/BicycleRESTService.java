@@ -17,7 +17,10 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.example.restejbjpa.domain.Address;
 import com.example.restejbjpa.domain.Bicycle;
+import com.example.restejbjpa.domain.License;
+import com.example.restejbjpa.domain.Producer;
 import com.example.restejbjpa.service.BicycleManager;
 
 @Path("bicycle")
@@ -66,6 +69,22 @@ public class BicycleRESTService {
 	    b.setPrice(price);
 
 	    return Response.status(200).entity("Bicycle").build();
+	}
+	
+	@GET
+	@Path("/onetoone")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String producerToManyAddresses(){
+		
+		Bicycle b1 = new Bicycle("LEVEL A1", 100);
+		bm.addBicycle(b1);
+		
+		License l1 = new License(123);
+		bm.addLicense(l1);
+		
+		b1.setLicense(l1);
+
+		return "OneToOne";
 	}
 
 	@DELETE

@@ -6,6 +6,7 @@ import javax.ejb.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.example.restejbjpa.domain.Address;
 import com.example.restejbjpa.domain.Producer;
 
 @Stateless
@@ -26,5 +27,9 @@ public class ProducerManager {
 	@SuppressWarnings("unchecked")
 	public List<Producer> getAll(){
 		return em.createNamedQuery("producer.all").getResultList();
+	}
+	
+	public void addAddress(Address address){	
+		em.persist(address);
 	}
 }

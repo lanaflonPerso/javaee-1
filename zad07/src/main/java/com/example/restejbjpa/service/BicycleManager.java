@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.example.restejbjpa.domain.Bicycle;
+import com.example.restejbjpa.domain.License;
 
 @Stateless
 public class BicycleManager {
@@ -42,4 +43,8 @@ public class BicycleManager {
     public void deleteAll(){
         em.createNamedQuery("bicycle.deleteAll").executeUpdate();
     }
+    
+    public void addLicense(License license) {
+		em.persist(license);
+	}
 }
