@@ -444,6 +444,87 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "getCheapestBicycle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/cheapest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"cheapest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBicyclesCountOfProducerByProducerName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/count/KROSS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"count",
+						"KROSS"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAddressByBicycleModel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restejbjpademo/api/bicycle/query/addressByBicycle/LEVEL A1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restejbjpademo",
+						"api",
+						"bicycle",
+						"query",
+						"addressByBicycle",
+						"LEVEL A1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

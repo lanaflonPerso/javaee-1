@@ -1,5 +1,6 @@
 package com.example.restejbjpa.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -25,6 +26,7 @@ import com.example.restejbjpa.domain.Bicycle;
 import com.example.restejbjpa.domain.License;
 import com.example.restejbjpa.domain.Producer;
 import com.example.restejbjpa.service.BicycleManager;
+import com.example.restejbjpa.service.ProducerManager;
 
 @Path("bicycle")
 @Stateless
@@ -32,6 +34,9 @@ public class BicycleRESTService {
 
 	@Inject
 	private BicycleManager bm;
+	
+	@Inject
+	private ProducerManager pm;
 	
 	@GET
 	@Path("/{bicycleId}")
@@ -46,6 +51,20 @@ public class BicycleRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Bicycle> getBicycles() {
 		return bm.getAll();
+	}
+	
+	@GET
+	@Path("/cheapest")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Bicycle> getCheapest() {
+		return bm.getCheapest();
+	}
+	
+	@GET
+	@Path("/count/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Object getBicyclesCountOfProducerByProducerName(@PathParam("name") String name) {
+		return bm.getBicyclesCountOfProducerByProducerName(name);
 	}
 
 	@POST
@@ -111,6 +130,65 @@ public class BicycleRESTService {
 		}
 		
 		JsonObject json =  Json.createObjectBuilder().add("result", producers).build();
+		return Response.ok(json, MediaType.APPLICATION_JSON).build();
+	}
+	
+	@GET
+	@Path("/query/addressByBicycle/{bModel}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAddressesByModel(@PathParam("bModel") String model){
+		
+		// MANY TO MANY - PRODUCERS BICYCLES
+		Producer p = new Producer("KROSS");
+		
+		Bicycle b1 = new Bicycle("LEVEL A1", 100);
+		Bicycle b2 = new Bicycle("LEVEL A2", 200);
+
+		List<Bicycle> bicycles = new ArrayList<>();
+		bicycles.add(b1);
+		bicycles.add(b2);
+		
+		p.addBicycles(bicycles);	
+		pm.addProducer(p);
+		
+		// ONE TO MANY - PRODUCER ADDRESSES
+		Address a1 = new Address("Kolejowa", "70", "06-300", "Przasnysz");
+		Address a2 = new Address("Abecadlowa", "15", "02-300", "Pruszcz");
+
+		pm.addAddress(a1);
+		pm.addAddress(a2);
+		
+		a1.setProducer(p);
+		a2.setProducer(p);
+		
+		// QUERY
+		List<Object[]> rawAddresses = bm.getAddressesByModel(model);
+		JsonArrayBuilder addresses = Json.createArrayBuilder();
+		JsonArrayBuilder result = Json.createArrayBuilder();
+		
+		for(Object[] rawAddress: rawAddresses){
+			
+			String aPostCode = (String) rawAddress[0];
+			String aCity = (String) rawAddress[1];
+			String aStreet = (String) rawAddress[2];
+			String aBuldingNumber = (String) rawAddress[3];
+			String pName = (String) rawAddress[4];
+			String bModel = (String) rawAddress[5];
+			
+			addresses.add(Json.createObjectBuilder()
+					.add("postCode", aPostCode)
+					.add("city", aCity)
+					.add("street", aStreet)
+					.add("buildingNumber", aBuldingNumber));
+			
+			result.add(Json.createObjectBuilder()
+					.add("address", addresses)
+					.add("producerName", pName)
+					.add("bicycleModel", bModel));
+			
+		}
+		
+		JsonObject json =  Json.createObjectBuilder().add("result", result).build();
 		return Response.ok(json, MediaType.APPLICATION_JSON).build();
 	}
 	

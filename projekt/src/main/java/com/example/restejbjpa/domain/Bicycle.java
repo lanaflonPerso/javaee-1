@@ -25,7 +25,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
     @NamedQuery(name = "bicycle.deleteAll", query="Delete from Bicycle"),
     @NamedQuery(name = "bicycle.findByPrice", query = "Select b from Bicycle b where b.price = :price"),
     @NamedQuery(name = "bicycleProducer.findByProducerName",
-	query = "Select p.name, b.model, b.price from Bicycle b JOIN b.producers p where p.name = :name")
+	query = "Select p.name, b.model, b.price from Bicycle b JOIN b.producers p where p.name = :name"),
+    @NamedQuery(name = "bicycle.cheapest", query = "Select b from Bicycle b order by b.price ASC"), // setMaxResults(1) in BicycleManager
+    @NamedQuery(name = "bicycleProducer.count",
+    query = "Select COUNT(*) from Bicycle b JOIN b.producers p where p.name = :name"),
+    @NamedQuery(name = "bicycleProducerAddress.getAddressesByBicycleModel",
+    query = "Select a.postCode, a.city, a.street, a.buildingNumber, p.name, b.model from Bicycle b JOIN b.producers p JOIN p.addresses a where b.model = :model")
 })
 public class Bicycle {
 	

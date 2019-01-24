@@ -38,6 +38,20 @@ public class BicycleManager {
 		return em.createNamedQuery("bicycle.findByPrice").setParameter("price", price).getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Bicycle> getCheapest(){
+		return em.createNamedQuery("bicycle.cheapest").setMaxResults(1).getResultList();
+	}
+	
+	public Object getBicyclesCountOfProducerByProducerName(String name){
+		return em.createNamedQuery("bicycleProducer.count").setParameter("name", name).getResultList().get(0);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Object[]> getAddressesByModel(String model){
+		return em.createNamedQuery("bicycleProducerAddress.getAddressesByBicycleModel").setParameter("model", model).getResultList();
+	}
+	
 	public Bicycle getBicycle(int id){
 	        return em.find(Bicycle.class, id);
     }
