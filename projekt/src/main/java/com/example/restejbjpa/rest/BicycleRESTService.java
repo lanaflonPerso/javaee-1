@@ -195,7 +195,7 @@ public class BicycleRESTService {
 	@GET
 	@Path("/onetoone")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String producerToManyAddresses(){
+	public String bicycleToLicense(){
 		
 		Bicycle b1 = new Bicycle("LEVEL A1", 100);
 		bm.addBicycle(b1);

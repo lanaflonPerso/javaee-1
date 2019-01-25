@@ -45,7 +45,7 @@ public class ProducerRESTService {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addBicycle(@QueryParam("name") String name) {
+	public Response addProducer(@QueryParam("name") String name) {
 		Producer producer = new Producer(name);
 		pm.addProducer(producer);
 
